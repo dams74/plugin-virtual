@@ -132,6 +132,7 @@ class virtual extends eqLogic {
 	
 	public function copyFromEqLogic($_eqLogic_id) {
 		$eqLogic = eqLogic::byId($_eqLogic_id);
+		
 		if (!is_object($eqLogic)) {
 			throw new Exception(__('Impossible de trouver l\'équipement : ', __FILE__) . $_eqLogic_id);
 		}
@@ -143,7 +144,7 @@ class virtual extends eqLogic {
 		}
 		foreach ($eqLogic->getCmd() as $cmd_def) {
 			$cmd_name = $cmd_def->getName();
-			if ($cmd_name == __('Rafraichir')) {
+			if ($cmd_name == __('Rafraichir',__FILE__)) {
 				$cmd_name .= '_1';
 			}
 			$cmd = new virtualCmd();
@@ -203,6 +204,8 @@ class virtualCmd extends cmd {
 			if (is_object($actionInfo)) {
 				$this->setId($actionInfo->getId());
 			}
+			$this->setConfiguration('calcul','');
+			$this->setValue('');
 		}
 		if ($this->getType() == 'action') {
 			if ($this->getConfiguration('infoName') == '') {

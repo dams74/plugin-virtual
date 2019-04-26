@@ -1,6 +1,11 @@
+# 26/04/2019
+
+- Optimisation
+=======
 # 22/03/2019
 
 - Ajout d'une securité en cas de boucle infini
+
 
 # 18/03/2019
 
